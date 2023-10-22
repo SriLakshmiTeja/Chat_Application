@@ -1,0 +1,145 @@
+## System Design Document
+
+**1. Introduction**
+
+The Chat Application is a real-time messaging service that allows users to register, authenticate, send and receive text messages, and participate in group chats. This document outlines the architecture and design of the application.
+
+**2. Architecture**
+
+The Chat Application consists of the following components:
+
+- Frontend: A React.js web application that provides the user interface for the chat service.
+- Backend: A Node.js server that handles user authentication and manages chat functionality.
+- Database: A MongoDB database for storing user data, messages, and group information.
+
+
+**3. Database Schema**
+
+The database includes the following collections:
+
+- Users: Stores user information, including usernames and password hashes.
+- Messages: Contains chat messages with fields for text, sender, chat ID, and timestamp.
+- Groups: Stores information about group chats, including names and member lists.
+
+**4. API Documentation**
+
+- User Registration: `POST /auth/register`
+- User Login: `POST /auth/login`
+- User Logout: `GET /auth/logout`
+- Send a Message: `POST /messages/send`
+- Get Messages for a Chat: `GET /messages/get/:chatId`
+- Create a Group: `POST /groups/create`
+
+APIs use JSON for request and response formats.
+
+**5. Third-Party Services**
+
+We use React Chat Engine for real-time chat functionality and integrate it with our frontend and backend.
+
+**6. Security Measures**
+
+- Passwords are securely hashed and salted using the bcrypt library.
+- User sessions are managed using Passport.js and secure HTTP cookies.
+- HTTPS is enforced to encrypt data transmission.
+
+**7. Creating and Using the Project**
+
+    All you need to do is create a project, install a Chat Engine component, and declare it in your application.
+
+    ** Create a Chat Engine Project** 
+
+    Let’s go to Chat Engine and get your API keys.
+        1. Register at chatengine.io
+        2. Click "New Project" and add a project title
+        3. Create your first User, I’ll call my user tslt
+        4. Remember the Project ID and the Username + Secret of a user. You will need it later.
+
+    **Add Chat Engine to your Application**
+
+        Install Chat Engine to your app by running:
+        npm install react-chat-engine or yarn add react-chat-engine
+        Add Chat Engine into your app by importing and declaring the <ChatEngine /> component.
+        IMPORTANT: Replace projectID with your Project's ID, replace userName with your User’s username, and replace userSecret with your user’s secret.
+
+    **Adding Users and Chats**
+        You can see 'New Chat' and 'New User' buttons where you can create a new chat with any user as admin you want and add a user 
+
+**8. Deployment**
+
+The application is deployed on a cloud platform (https://chatengine.io/projects/6773b09d-6932-4dcb-9874-c0ad210fa672), and we use continuous integration and deployment for seamless updates.
+
+**9. Data Flow**
+
+Data flows from user interactions in the frontend to the backend, which processes and stores data in the database. Real-time updates are delivered to the frontend using WebSocket.
+
+**10. Dependencies**
+
+- Frontend: React, React Chat Engine, Axios, Ant Design.
+- Backend: Express.js, Passport.js, Mongoose, bcrypt.
+- Database: MongoDB.
+
+## Setup and Run Instructions
+
+**1. Prerequisites**
+
+- Node.js and npm installed
+- MongoDB installed and running
+- Git (optional, for cloning the repository)
+
+**2. Configuration**
+
+- Create a `.env` file in the backend directory and configure your environment variables, including the database connection string, session secrets, and any API keys.
+
+**3. Installation**
+
+- Clone the repository from [GitHub Repository URL](insert_repository_url_here) or download and extract the source code.
+
+- Install frontend dependencies:
+
+    -cd chat_application
+
+    -npm install
+
+- Install backend dependencies:
+
+    - cd chat_application/backend
+
+    -npm install
+
+**4. Database Setup**
+
+- Ensure that MongoDB is running locally or configure the connection string in your `.env` file.
+
+**5. Running the Application**
+
+- Start the backend server:
+
+    - cd chat_application/backend
+
+    - npm start
+
+- Start the frontend development server:
+    - cd chat_application
+
+    - npm start
+
+
+**6. Testing**
+
+- To run tests, use the following command:
+
+    - cd chat_application
+
+    - npm test
+
+**7. User Guide**
+
+- Visit {https://chatengine.io/} and register or log in to start using the chat application. Follow on-screen instructions for sending messages and joining group chats.
+
+**8. Known Issues**
+
+- Currently, no known issues.
+
+
+
+
